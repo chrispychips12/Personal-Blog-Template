@@ -44,3 +44,31 @@ function handleFormSubmit(event) {
 // TODO: Add an event listener to the form on submit. Call the function to handle the form submission
 //https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement/submit_event
 blogForm.addEventListener('submit', handleFormSubmit);  
+
+// Light/Dark Mode Toggle
+const toggleModeButton = document.getElementById('toggleMode');
+
+toggleModeButton.addEventListener('click', function() {
+    document.body.classList.toggle('dark-mode'); // Toggle the dark-mode class on the body element
+    if (document.body.classList.contains('dark-mode')) {
+        toggleModeButton.textContent = '☀️'; // Light mode icon
+    } else {
+        toggleModeButton.textContent = '🌙'; // Dark mode icon
+    }
+    // Save the current mode to localStorage
+    localStorage.setItem('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
+});
+
+// Load the saved theme from localStorage when the DOM content is loaded
+document.addEventListener('DOMContentLoaded', function() {
+    const savedTheme = localStorage.getItem('theme'); // Get the saved theme from localStorage
+    // Apply the saved theme
+    if (savedTheme === 'dark') {
+        document.body.classList.add('dark-mode');
+        toggleModeButton.textContent = '☀️'; // Light mode icon
+    } else {
+        document.body.classList.remove('dark-mode');
+        toggleModeButton.textContent = '🌙'; // Dark mode icon
+    }
+});
+// Mainly copied from blog.js file
