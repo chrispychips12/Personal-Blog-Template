@@ -13,36 +13,29 @@ function handleFormSubmit(event) {
     if (!username || !title || !content) {
         // If any fields are empty, set the error message
         errorMessage.textContent = 'Please complete the form.';
-        return; // Loop end
+        return; // Stop the function execution
     }
-
 
     errorMessage.textContent = '';  // Clear error message when fields are not empty
 
     const blogPost = { username, title, content };  // Create a new blog post 
 
-    let blogPosts = localStorage.getItem('blogPosts'); 
-    // Get existing blog posts from local storage 
-    // https://developer.mozilla.org/en-US/docs/Web/API/Storage/getItem
+    // Save the new blog post to local storage using the saveBlogPost function
+    saveBlogPost(blogPost);
 
-    blogPosts = blogPosts ? JSON.parse(blogPosts) : [];
-    blogPosts.push(blogPost); // Add the new blog post to the array
-
-    localStorage.setItem('blogPosts', JSON.stringify(blogPosts)); // Store the updated array back in local storage
-
-    redirectPage('blog.html');// Redirect to the blog page
-
+    // Redirect to the blog page
+    redirectPage('blog.html');
 }
 
-    let redirectURL = '';
-
-    const redirectPage = function (url) {
-        redirectURL = url;
-        location.assign(url);
-    };
+// Function to redirect to a specified URL
+let redirectURL = '';
+const redirectPage = function (url) {
+    redirectURL = url;
+    location.assign(url);
+};
 
 // TODO: Add an event listener to the form on submit. Call the function to handle the form submission
-//https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement/submit_event
+// https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement/submit_event
 blogForm.addEventListener('submit', handleFormSubmit);  
 
 // Light/Dark Mode Toggle
@@ -52,16 +45,16 @@ toggleModeButton.addEventListener('click', function() {
     document.body.classList.toggle('dark-mode'); // Toggle the dark-mode class on the body element
     if (document.body.classList.contains('dark-mode')) {
         toggleModeButton.textContent = '☀️'; // Light mode icon
+        saveTheme('dark'); // Save the current mode to localStorage
     } else {
         toggleModeButton.textContent = '🌙'; // Dark mode icon
+        saveTheme('light'); // Save the current mode to localStorage
     }
-    // Save the current mode to localStorage
-    localStorage.setItem('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
 });
 
 // Load the saved theme from localStorage when the DOM content is loaded
 document.addEventListener('DOMContentLoaded', function() {
-    const savedTheme = localStorage.getItem('theme'); // Get the saved theme from localStorage
+    const savedTheme = getSavedTheme(); // Get the saved theme from localStorage
     // Apply the saved theme
     if (savedTheme === 'dark') {
         document.body.classList.add('dark-mode');

@@ -28,8 +28,7 @@ function handleNoPosts() {
 // TODO: Create a function that reads from local storage and returns the data
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse
 function getBlogPosts() {
-    let blogPosts = localStorage.getItem('blogPosts'); // Retrieve blog posts from local storage
-    return blogPosts ? JSON.parse(blogPosts) : []; 
+    return readFromLocalStorage('blogPosts') || []; 
 }
 
 // TODO: Call the function to render the list of blog posts
@@ -52,16 +51,16 @@ toggleModeButton.addEventListener('click', function() {
     document.body.classList.toggle('dark-mode'); // Toggle the dark-mode class on the body element
     if (document.body.classList.contains('dark-mode')) {
         toggleModeButton.textContent = '☀️'; // Light mode icon
+        saveTheme('dark'); // Save the current mode to localStorage
     } else {
         toggleModeButton.textContent = '🌙'; // Dark mode icon
+        saveTheme('light'); // Save the current mode to localStorage
     }
-    // Save the current mode to localStorage
-    localStorage.setItem('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
 });
 
 // Load the saved theme from localStorage when the DOM content is loaded
 document.addEventListener('DOMContentLoaded', function() {
-    const savedTheme = localStorage.getItem('theme'); // Get the saved theme from localStorage
+    const savedTheme = getSavedTheme(); // Get the saved theme from localStorage
     // Apply the saved theme
     if (savedTheme === 'dark') {
         document.body.classList.add('dark-mode');
