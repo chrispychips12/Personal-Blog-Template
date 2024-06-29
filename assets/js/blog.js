@@ -15,8 +15,7 @@ function appendPost(post) {
     `;
     // Append the newly created list item to the posts list
     document.getElementById('postsList').appendChild(li);
-  }
-  
+}
 
 // TODO: Create a function that handles the case where there are no blog posts to display
 function handleNoPosts() {
@@ -24,8 +23,51 @@ function handleNoPosts() {
     message.textContent = 'No blog posts available.';
     // Append the message to the main element
     main.appendChild(message);
-  }
+}
 
 // TODO: Create a function that reads from local storage and returns the data
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse
+function getBlogPosts() {
+    let blogPosts = localStorage.getItem('blogPosts'); // Retrieve blog posts from local storage
+    return blogPosts ? JSON.parse(blogPosts) : []; 
+}
 
 // TODO: Call the function to render the list of blog posts
+function renderPosts() {
+    const blogPosts = getBlogPosts(); // Get blog posts from local storage
+    if (blogPosts.length === 0) { // Check if there are no blog posts
+        handleNoPosts(); 
+    } else {
+        blogPosts.forEach(post => appendPost(post)); // Iterate through the function
+    }
+}
+
+document.addEventListener('DOMContentLoaded', renderPosts);
+// https://developer.mozilla.org/en-US/docs/Web/API/Document/DOMContentLoaded_event
+
+// Light/Dark Mode Toggle
+const toggleModeButton = document.getElementById('toggleMode');
+
+toggleModeButton.addEventListener('click', function() {
+    document.body.classList.toggle('dark-mode'); // Toggle the dark-mode class on the body element
+    if (document.body.classList.contains('dark-mode')) {
+        toggleModeButton.textContent = '☀️'; // Light mode icon
+    } else {
+        toggleModeButton.textContent = '🌙'; // Dark mode icon
+    }
+    // Save the current mode to localStorage
+    localStorage.setItem('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
+});
+
+// Load the saved theme from localStorage when the DOM content is loaded
+document.addEventListener('DOMContentLoaded', function() {
+    const savedTheme = localStorage.getItem('theme'); // Get the saved theme from localStorage
+    // Apply the saved theme
+    if (savedTheme === 'dark') {
+        document.body.classList.add('dark-mode');
+        toggleModeButton.textContent = '☀️'; // Light mode icon
+    } else {
+        document.body.classList.remove('dark-mode');
+        toggleModeButton.textContent = '🌙'; // Dark mode icon
+    }
+});
