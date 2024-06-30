@@ -46,3 +46,8 @@ SOURCES + ACKNOWLEDGEMENTS:
 - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse
 - https://developer.mozilla.org/en-US/docs/Web/API/Document/DOMContentLoaded_event
 
+<img width="1469" alt="Screenshot 2024-06-30 at 10 47 17 AM" src="https://github.com/chrispychips12/Personal-Blog-Template/assets/94519893/d6fa0f63-82a0-4d99-93d2-f9e1310c778f">
+<img width="1451" alt="Screenshot 2024-06-30 at 10 47 05 AM" src="https://github.com/chrispychips12/Personal-Blog-Template/assets/94519893/5ef3ec32-7357-4bea-8f18-d8e891bf8e95">
+<img width="1452" alt="Screenshot 2024-06-30 at 10 46 39 AM" src="https://github.com/chrispychips12/Personal-Blog-Template/assets/94519893/4c3d04e0-997a-4e17-9ded-8a5cedba6bc2">
+<img width="1461" alt="Screenshot 2024-06-30 at 10 46 31 AM" src="https://github.com/chrispychips12/Personal-Blog-Template/assets/94519893/5c5d3c44-f5bc-472e-9d2e-04852a153407">
+<img width="1466" alt="Screenshot 2024-06-30 at 10 47 24 AM" src="https://github.com/chrispychips12/Personal-Blog-Template/assets/94519893/d0233369-ced4-4c7c-9a64-63e0a87d7f42">
