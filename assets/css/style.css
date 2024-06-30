@@ -83,6 +83,7 @@ header {
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
+  color: var(--dark-accent)
 }
 
 header,
@@ -101,6 +102,8 @@ main {
 /*
   Classes
 */
+
+
 .dark header,
 .dark footer {
   background-color: var(--dark);
@@ -114,6 +117,10 @@ main {
   border-top: solid .5rem var(--disabled);
 }
 
+.dark a {
+  color: white !important; 
+}
+
 .light header,
 .light footer {
   background-color: var(--light);
@@ -123,6 +130,14 @@ main {
 .light main {
   background-color: var(--light-accent);
   color: var(--dark);
+}
+
+a.nav-link {
+  color: black !important;
+}
+
+a.text-black {
+  color: black;
 }
 
 /*
@@ -148,7 +163,7 @@ body {
   
   .dark-mode {
     background-color: var(--dark-accent);
-    color: var(--light);
+    color: var(--light); 
   }
   
   .dark-mode header,
@@ -160,6 +175,10 @@ body {
   .dark-mode main {
     background-color: var(--dark-accent);
     color: var(--light);
+  }
+
+  .dark-mode a { 
+    color: var(--light) !important; 
   }
   
   .light-mode {
@@ -176,4 +195,8 @@ body {
   .light-mode main {
     background-color: var(--light-accent);
     color: var(--dark);
+  }
+
+  .light-mode a { 
+    color: var(--dark) !important; 
   }
