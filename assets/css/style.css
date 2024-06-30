@@ -45,6 +45,14 @@ ul {
   list-style: none;
 }
 
+/* Added button styling so its less awkward */
+#toggleMode {
+    margin-left: 15px; 
+    font-size: 1rem; 
+    padding: 0.5rem 1rem; 
+}
+
+
 /*
   General Styles
 */
