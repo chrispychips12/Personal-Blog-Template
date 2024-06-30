@@ -51,16 +51,16 @@ toggleModeButton.addEventListener('click', function() {
     document.body.classList.toggle('dark-mode'); // Toggle the dark-mode class on the body element
     if (document.body.classList.contains('dark-mode')) {
         toggleModeButton.textContent = '☀️'; // Light mode icon
-        saveTheme('dark'); // Save the current mode to localStorage
+        saveTheme('dark'); // Savess the current mode to localStorage
     } else {
         toggleModeButton.textContent = '🌙'; // Dark mode icon
-        saveTheme('light'); // Save the current mode to localStorage
+        saveTheme('light'); // Saves the current mode to localStorage
     }
 });
 
 // Load the saved theme from localStorage when the DOM content is loaded
 document.addEventListener('DOMContentLoaded', function() {
-    const savedTheme = getSavedTheme(); // Get the saved theme from localStorage
+    const savedTheme = getSavedTheme(); // Gets the saved theme from localStorage
     // Apply the saved theme
     if (savedTheme === 'dark') {
         document.body.classList.add('dark-mode');
