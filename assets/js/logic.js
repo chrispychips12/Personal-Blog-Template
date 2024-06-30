@@ -17,20 +17,3 @@ function writeToLocalStorage(key, value) {
 const BLOG_POSTS_KEY = 'blogPosts'; // New constant - to be used as key to store and retrieve from local storage
 // I'll use this key for blog posts, as per name
 
-function getBlogPosts() {
-    return readFromLocalStorage(BLOG_POSTS_KEY) || [];
-}
-
-function saveBlogPost(post) {
-    const blogPosts = getBlogPosts();
-    blogPosts.push(post);
-    writeToLocalStorage(BLOG_POSTS_KEY, blogPosts);
-}
-
-function getSavedTheme() {
-    return readFromLocalStorage('theme');
-}
-
-function saveTheme(theme) {
-    writeToLocalStorage('theme', theme);
-}
