@@ -45,28 +45,30 @@ document.addEventListener('DOMContentLoaded', renderPosts);
 // https://developer.mozilla.org/en-US/docs/Web/API/Document/DOMContentLoaded_event
 
 // Light/Dark Mode Toggle
+//https://dev.to/whitep4nth3r/the-best-lightdark-mode-theme-toggle-in-javascript-368f
 const toggleModeButton = document.getElementById('toggleMode');
-
 toggleModeButton.addEventListener('click', function() {
-    document.body.classList.toggle('dark-mode'); // Toggle the dark-mode class on the body element
+    document.body.classList.toggle('dark-mode'); 
     if (document.body.classList.contains('dark-mode')) {
-        toggleModeButton.textContent = '☀️'; // Light mode icon
+        toggleModeButton.textContent = '☀️'; 
         saveTheme('dark'); // Savess the current mode to localStorage
     } else {
-        toggleModeButton.textContent = '🌙'; // Dark mode icon
-        saveTheme('light'); // Saves the current mode to localStorage
+        toggleModeButton.textContent = '🌙'; 
+        saveTheme('light'); =
     }
 });
 
 // Load the saved theme from localStorage when the DOM content is loaded
+// store and apply saved themes
+    //https://codyhouse.co/blog/post/store-theme-color-preferences-with-localstorage
 document.addEventListener('DOMContentLoaded', function() {
     const savedTheme = getSavedTheme(); // Gets the saved theme from localStorage
     // Apply the saved theme
     if (savedTheme === 'dark') {
         document.body.classList.add('dark-mode');
-        toggleModeButton.textContent = '☀️'; // Light mode icon
+        toggleModeButton.textContent = '☀️'; 
     } else {
         document.body.classList.remove('dark-mode');
-        toggleModeButton.textContent = '🌙'; // Dark mode icon
+        toggleModeButton.textContent = '🌙'; 
     }
 });

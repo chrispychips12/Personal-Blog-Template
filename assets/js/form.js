@@ -3,22 +3,21 @@ const blogForm = document.getElementById('blogForm');
 
 // TODO: Create a function that handles the form submission. Grab the form data and store it in local storage, then redirect to the blog page using the redirectPage function. If the form is submitted with missing data, display an error message to the user.
 function handleFormSubmit(event) {
-    event.preventDefault(); // Prevent the default form submission behavior
+    event.preventDefault(); 
     const username = document.getElementById('username').value;
     const title = document.getElementById('title').value;
     const content = document.getElementById('content').value;
     const errorMessage = document.getElementById('error');
 
-    // Check if any required fields are empty
+    // Check to see if any required fields are empty
     if (!username || !title || !content) {
-        // If any fields are empty, set the error message
         errorMessage.textContent = 'Please complete the form.';
-        return; // Stop the function execution
+        return; 
     }
 
     errorMessage.textContent = '';  // Clear error message when fields are not empty
 
-    const blogPost = { username, title, content };  // Create a new blog post 
+    const blogPost = { username, title, content };  // Create new blog post 
 
     // Save the new blog post to local storage using the saveBlogPost function
     saveBlogPost(blogPost);
@@ -39,23 +38,24 @@ const redirectPage = function (url) {
 blogForm.addEventListener('submit', handleFormSubmit);  
 
 // Light/Dark Mode Toggle
+// https://dev.to/whitep4nth3r/the-best-lightdark-mode-theme-toggle-in-javascript-368f
 const toggleModeButton = document.getElementById('toggleMode');
-
 toggleModeButton.addEventListener('click', function() {
-    document.body.classList.toggle('dark-mode'); // Toggle the dark-mode class on the body element
+    document.body.classList.toggle('dark-mode'); 
     if (document.body.classList.contains('dark-mode')) {
-        toggleModeButton.textContent = '☀️'; // Light mode icon
-        saveTheme('dark'); // Save the current mode to localStorage
+        toggleModeButton.textContent = '☀️'; 
+        saveTheme('dark'); 
     } else {
-        toggleModeButton.textContent = '🌙'; // Dark mode icon
-        saveTheme('light'); // Save the current mode to localStorage
+        toggleModeButton.textContent = '🌙'; 
+        saveTheme('light'); 
     }
 });
 
 // Load the saved theme from localStorage when the DOM content is loaded
 document.addEventListener('DOMContentLoaded', function() {
-    const savedTheme = getSavedTheme(); // Get the saved theme from localStorage
-    // Apply the saved theme
+    const savedTheme = getSavedTheme(); 
+    // store and apply saved themes
+    //https://codyhouse.co/blog/post/store-theme-color-preferences-with-localstorage
     if (savedTheme === 'dark') {
         document.body.classList.add('dark-mode');
         toggleModeButton.textContent = '☀️'; // Light mode icon
