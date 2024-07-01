@@ -54,7 +54,7 @@ toggleModeButton.addEventListener('click', function() {
         saveTheme('dark'); // Savess the current mode to localStorage
     } else {
         toggleModeButton.textContent = '🌙'; 
-        saveTheme('light'); =
+        saveTheme('light'); 
     }
 });
 
